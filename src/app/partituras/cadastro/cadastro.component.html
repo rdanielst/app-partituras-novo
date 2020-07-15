@@ -1,0 +1,120 @@
+
+<div class="box-upload" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center">
+
+  <div class="dropZone" fxLayout="column" fxLayoutAlign="center center" appDragDrop (arquivoDrop)="onFileDrop($event)" *ngIf="!file">
+    <input type="file" #fileDropRef id="fileDropRef" (change)="onFileSelect($event)">
+    <img src="assets/imagens/partitura-svg.svg" alt="">
+    <h3>Solte aqui a sua partitura</h3>
+    <p>ou clique para selecionar ;)</p>
+    <!--<label for="fileDropRef">Selecione o arquivo</label>-->
+  </div>
+
+  <mat-card class="card-pdf-render" *ngIf="pdfSrc">
+
+    <mat-card-header>
+      <mat-card-title [title]="file?.name"  style="width: 350px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" ><mat-icon>folder</mat-icon>{{ file?.name }}</mat-card-title>
+      <mat-card-subtitle>{{ formatBytes(file?.size, 2) }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <div>
+      <pdf-viewer
+      [src]="pdfSrc"
+      [render-text]="false"
+      [show-all]="false"
+      [original-size]="false"
+      [fit-to-page]="false"
+      [(page)]="pages"
+      (after-load-complete)="afterLoadComplete($event)"
+      style="display: block;"></pdf-viewer>
+    </div>
+
+    <mat-card-actions>
+
+      <button (click)="incrementPage(-1)" mat-button type="button">
+        <mat-icon>navigate_before</mat-icon>
+      </button>
+
+      <mat-form-field class="page-number">
+        <input matInput type="number" min="1" placeholder="Página" [(ngModel)]="pages" pattern="-?[0-9]*(\.[0-9]+)?">
+        <mat-error>Input is not a number!</mat-error>
+      </mat-form-field>
+
+      <span *ngIf="pdf">de {{ pdf.numPages }}</span>
+
+      <button (click)="incrementPage(1)" mat-button type="button">
+        <mat-icon>navigate_next</mat-icon>
+      </button>
+
+      <!-- <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button> -->
+    </mat-card-actions>
+
+  </mat-card>
+
+  <mat-card class="card-form" *ngIf="pdfSrc">
+
+    <div class="box-form">
+
+      <form [formGroup]="form" class="form-cadastro-partitura" (ngSubmit)="uploadFile()">
+        <mat-form-field appearance="fill">
+          <input matInput placeholder="Titulo" formControlName="titulo">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <input matInput placeholder="Artista" formControlName="artista">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <input matInput placeholder="Genero" formControlName="genero">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <input matInput placeholder="Instrumento" formControlName="instrumento">
+        </mat-form-field>
+
+        <button type="button" (click)="excluirArquivo()" mat-raised-button color="accent">
+          <mat-icon>delete</mat-icon>
+          <span>Cancelar</span>
+        </button>
+        <button type="submit" mat-raised-button color="primary">
+          <mat-icon>check</mat-icon>
+          Cadastrar
+        </button>
+      </form>
+    </div>
+
+  </mat-card>
+
+</div>
+
+
+
+
+
+
+
+<div class="container">
+  <mat-card class="card-partitura" *ngFor="let p of partiturasList">
+    <mat-card-header>
+      <mat-card-title><mat-icon>folder</mat-icon> {{ p.titulo }}</mat-card-title>
+      <mat-card-subtitle>{{ p.artista }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <img src="../../assets/imagens/partitura_img.png" alt="Partitura">
+
+    <mat-card-content>
+      <p>
+        {{ p.genero }} <br>
+        {{ p.instrumento }}
+      </p>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+
+<!-- <button mat-button (click)="showDialogProgress()">LIKE</button> -->

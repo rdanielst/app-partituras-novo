@@ -1,0 +1,52 @@
+<mat-toolbar color="primary" fxLayoutAlign="space-between center">
+  <div class="logo" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="15px">
+      <a routerLink="/home">
+        <img src="assets/imagens/logo-svg.svg" alt="Logo" fxFlex="70px">
+      </a>
+      <div>
+        <span>Clevermusic</span>
+      </div>
+  </div>
+  <div fxHide.gt-xs>
+      <button mat-icon-button (click)="onToggleSidenav()">
+          <mat-icon>menu</mat-icon>
+      </button>
+  </div>
+  <div fxFlex fxLayout fxLayoutAlign="end center" fxHide.xs>
+      <ul fxLayout fxLayoutGap="25px"  class="navigation-items">
+          <li>
+              <a routerLink="/home">História</a>
+          </li>
+          <li>
+              <a routerLink="/account">Explorar</a>
+          </li>
+          <li>
+              <a routerLink="/account">Planos</a>
+          </li>
+          <li>
+              <a routerLink="/account">Contato</a>
+          </li>
+      </ul>
+
+      <div class="login">
+        <button mat-icon-button color="accent" [matMenuTriggerFor]="menu">
+          <mat-icon>person</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>dialpad</mat-icon>
+            <span>Perfil</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>logout</mat-icon>
+            <span>Logout</span>
+          </button>
+          <button mat-menu-item routerLink="/partituras/cadastro">
+            <mat-icon>cloud_upload</mat-icon>
+            <span>Cadastrar Partitura</span>
+          </button>
+        </mat-menu>
+      </div>
+
+  </div>
+</mat-toolbar>

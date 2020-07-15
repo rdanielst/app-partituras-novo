@@ -1,0 +1,154 @@
+* {
+  box-sizing: border-box;
+}
+
+.box-upload {
+  display: flex;
+  flex-wrap: wrap;
+  height: 400px;
+  padding: 30px;
+}
+
+/* Card Form e Upload */
+.card-form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: left;
+}
+
+
+.dropZone{
+  width: 100%;
+  background: #ccc;
+  text-align: center;
+  padding: 5px;
+  border: dashed 2px #999;
+  position: relative;
+  cursor: pointer;
+}
+
+.arquivo-upload {
+  width: 100%;
+  display: block;
+}
+
+.dropZone input{
+  position: absolute;
+  opacity: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.dropZone label {
+  color: white;
+  border-radius: 20px;
+  background: #db202f;
+  padding: 15px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 10px;
+  left:0;
+}
+
+.dropZone label:hover {
+  cursor: pointer;
+  background-color: tomato;
+}
+
+.dropZone img {
+  margin: 0 auto;
+  height: 70px;
+  color:black;
+  display: block;
+}
+
+.dropZone span {
+  margin: 10px;
+}
+
+.dropZone h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #38424c;
+  margin-bottom: 30px;
+}
+
+.fileover {
+  background: rgb(37, 222, 255) !important;
+}
+
+
+.card-pdf-render {
+  max-width: 400px;
+}
+
+.page-number {
+  width: 50px;
+}
+
+
+/* Listagem de Partituras */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-partitura {
+  max-width: 200px;
+  flex: 2 1 200px;
+  margin: 10px;
+}
+
+.card-partitura img {
+  max-width: 200px;
+  width: 100%;
+}
+
+.mat-card-avatar {
+  width: 0px;
+  height: 0px;
+ }
+
+ .mat-card-title {
+   display: flex;
+ }
+
+ .mat-icon.notranslate.material-icons.mat-icon-no-color {
+  margin-top: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-right: 5px;
+ }
+
+ /* Form cadastro partitura */
+
+
+ form.form-cadastro-partitura{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  max-width: 400px;
+}
+
+.mat-form-field{
+  display: inherit block;
+  flex: 1 1 250px;
+  max-width: 400px !important;
+  margin: 5px;
+  justify-content: space-between !important;
+  align-content: space-between;
+  align-items: flex-end;
+ }
+
+ .mat-raised-button {
+  width: 200px;
+  max-width: 200px;
+ }
